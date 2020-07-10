@@ -19,7 +19,7 @@ pipeline {
                 }
             }
             steps {
-                pytest -v --cov
+                
                 sh 'pytest -v --cov --junit-xml test-reports/results.xml sources/test_calculator.py' 
             }
             post {
