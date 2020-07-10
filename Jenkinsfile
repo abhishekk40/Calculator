@@ -8,25 +8,12 @@ pipeline {
                 }
             }
             steps {
-                sh 'python -m py_compile sources/calculator.py'
-                stash(name: 'compiled-results', includes: 'sources/*.py*')
+                sh 'python -m py_compile calculator.py'
+                stash(name: 'compiled-results', includes: '*.py*')
             }
-        }
-        stage('Test') { 
-            agent {
-                docker {
-                    image 'qnib/pytest' 
-                }
-            }
-            steps {
-                
-                sh 'pytest -v --cov --junit-xml test-reports/results.xml sources/test_calculator.py' 
-            }
-            post {
-                always {
-                    junit 'test-reports/results.xml' 
-                }
-            }
+        
+        
+            
         }
     }
 }
