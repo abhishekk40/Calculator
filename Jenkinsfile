@@ -3,9 +3,9 @@ pipeline {
     stages {
         stage('Build') {
             agent {
-                docker {
-                    image 'python:3-alpine'
-                }
+                dockerfile {
+      filename 'Dockerfile'
+    }
             }
             steps {
                 sh 'python -m py_compile calculator.py'
