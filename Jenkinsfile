@@ -9,8 +9,9 @@ pipeline {
             }
             
         
-            stage('Test'){
-                echo " Testing"
+            steps {
+                sh 'python -m py_compile calculator.py'
+
             }
             
         }
