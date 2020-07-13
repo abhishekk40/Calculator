@@ -7,10 +7,7 @@ pipeline {
       filename 'Dockerfile'
     }
             }
-            steps {
-                sh 'python -m py_compile calculator.py'
-                
-            }
+            
         
         
             
