@@ -9,10 +9,14 @@ import unittest
 class TestCalculator(unittest.TestCase):
 
     def test_addition(self):
-        assert 4 == calculator.add(2, 2)
+        result = calculator.add2(1, 2)
+        self.assertEqual(result, 3)
+        
 
     def test_subtraction(self):
-        assert 2 == calculator.subtract(4, 2)
+        result = calculator.subtract(1, 2)
+        self.assertEqual(result, 3)
+        
         
 if __name__ == '__main__':
     unittest.main()
