@@ -16,7 +16,21 @@ pipeline {
             
         }
         
-        
+        stage('Test') { 
+            agent {
+                docker {
+                    image 'qnib/pytest:latest'
+                }
+            }
+            steps {
+                sh 'py.test --junit-xml test-reports/results.xml test_calculator.py'
+            }
+            post {
+                always {
+                    junit 'test-reports/results.xml' 
+                }
+            }
+        }
         
     }
 }
