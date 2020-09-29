@@ -1,36 +1,12 @@
 pipeline {
-    agent none
+    agent {
+        docker { image 'node:14-alpine' }
+    }
     stages {
-        stage('Build') {
-            agent {
-                docker{
-                   image 'python:3.8-alpine'
-                }
-              }
-            
-       steps {
-                sh 'python -m py_compile calculator.py'
-           stash(name: 'compiled-results', includes: '*.py*')
-
-            }
-            
-        }
-        
-        stage('Test') { 
-            agent {
-                docker {
-                    image 'qnib/pytest'
-                }
-            }
+        stage('Test') {
             steps {
-                sh 'py.test --junit-xml test-reports/results.xml test_calculator.py'
-            }
-            post {
-                always {
-                    junit 'test-reports/results.xml' 
-                }
+                sh 'node --version'
             }
         }
-        
     }
 }
