@@ -9,8 +9,8 @@ import unittest
 class TestCalculator(unittest.TestCase):
 
     def test_addition(self):
-        result = calculator.add(2, 6)
-        self.assertEqual(result, 8)
+        result = calculator.add(2, 7)
+        self.assertEqual(result, :9)
         
 
     def test_subtraction(self):
